@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <vector>
 #include <string.h>
+#include <sstream>
 
 #include "Sort.h"
 #include "QuickSort.h"
@@ -12,15 +13,22 @@ using namespace std;
 
 int main() {
   QuickSort quicksort;
-  BubbleSort bubblesort;
   RecursiveBinarySearch recursivebinarysearch; 
 
-  int input;
+  string input;
   vector<int> inputVector;
+  int x = 0;
 
-  for (int i = 0; i < 8; i++) {
-    cin >> input;
-    inputVector.push_back(input);
+  // for (int i = 0; i < 0; i++) {
+  //   cin >> input;
+  //   inputVector.push_back(input);
+  // }
+
+  // Input code from Shadow on https://stackoverflow.com/questions/26270724/input-unknown-number-of-variables-in-one-linein-c
+  getline(cin, input);
+  stringstream ss(input);
+  while (ss >> x) {
+    inputVector.push_back(x);
   }
 
   inputVector = quicksort.sort(inputVector);
