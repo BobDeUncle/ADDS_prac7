@@ -1,30 +1,34 @@
 #include <iostream>
 #include <stdlib.h>
 #include <vector>
+#include <string.h>
 
 #include "Sort.h"
 #include "QuickSort.h"
 #include "BubbleSort.h"
+#include "RecursiveBinarySearch.h"
 
 using namespace std;
 
 int main() {
   QuickSort quicksort;
   BubbleSort bubblesort;
-  static const int arr[] = { 3, 2, 5, 6, 8, 7, 1 };
-  vector<int> values (arr, arr + sizeof(arr) / sizeof(arr[0]));
+  RecursiveBinarySearch recursivebinarysearch; 
 
-  vector<int> testQuick = quicksort.sort(values);
+  int input;
+  vector<int> inputVector;
 
-  for (int i = 0; i < testQuick.size(); i++) {
-    cout << testQuick.at(i) << ' '; 
+  for (int i = 0; i < 8; i++) {
+    cin >> input;
+    inputVector.push_back(input);
   }
-  cout << endl;
 
-  vector<int> testBubble = bubblesort.sort(values);
+  inputVector = quicksort.sort(inputVector);
+  bool inList = recursivebinarysearch.search(inputVector, 1);
 
-  for (int i = 0; i < testBubble.size(); i++) {
-    cout << testBubble.at(i) << ' '; 
+  cout << (inList ? "true" : "false") << " ";
+
+  for (int i = 0; i < inputVector.size(); i++) {
+    cout << inputVector.at(i) << " ";
   }
-  cout << endl;
 }
